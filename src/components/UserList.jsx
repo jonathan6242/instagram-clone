@@ -20,11 +20,11 @@ function UserList({ setOpen, users, type, setProfileUser, profileUser }) {
     getUserProfiles();
   }, [])
 
-  useEffect(() => {
-    if(userProfiles) {
-      console.log('User profiles:', userProfiles)
-    }
-  }, [userProfiles])
+  // useEffect(() => {
+  //   if(userProfiles) {
+  //     console.log('User profiles:', userProfiles)
+  //   }
+  // }, [userProfiles])
 
   return (
     <>

@@ -6,9 +6,12 @@ import ProfilePicture from "./ProfilePicture"
 
 function UserListItem({ setOpen, profile, setProfileUser, profileUser, type }) {
   const { user } = useContext(UserContext);
-  const [isFollowing, setIsFollowing] = useState(profile.followers.includes(user.uid));
+  const [isFollowing, setIsFollowing] = useState(profile.followers.includes(user?.uid));
 
   const onClick = async () => {
+    if(!user) {
+      return;
+    }
     setIsFollowing(!isFollowing)
 
     if(profileUser?.uid === user?.uid && type === 'Following') {
@@ -46,7 +49,7 @@ function UserListItem({ setOpen, profile, setProfileUser, profileUser, type }) {
       </div>
     </div>
     {
-      profile?.uid !== user?.uid && (
+      user && profile?.uid !== user?.uid && (
         <button 
           className={`follow-button ${isFollowing ? 'unfollow-button' : ''}`}
           onClick={onClick}
