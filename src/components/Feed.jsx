@@ -72,7 +72,7 @@ function Feed() {
                 className="font-semibold hover:underline underline-offset-2 decoration-2 cursor-pointer"
                 onClick={async () => {
                   setPopupOpen(false)
-                  await signInWithEmailAndPassword(auth, "test@test.com", "Lawrence2157")
+                  await signInWithEmailAndPassword(auth, "test@test.com", "demoaccount")
                   toast.success('Successfully logged in.')
                 }}
               >

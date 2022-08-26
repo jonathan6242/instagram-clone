@@ -32,8 +32,6 @@ function Sidebar() {
     }
   }, [user?.uid])
 
-  // await signInWithEmailAndPassword(auth, "test@test.com", "Lawrence2157")
-
   return (
     <>
       {
