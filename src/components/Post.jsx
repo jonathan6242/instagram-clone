@@ -16,7 +16,7 @@ import CommentFeed from './CommentFeed';
 import PostSkeleton from './PostSkeleton';
 import EmojiPicker from './EmojiPicker';
 import StoriesContext from "../context/StoriesContext"
-import UserList from './UserList';
+import { toast } from 'react-toastify';
 
 function Post({ post }) {
   const navigate = useNavigate();
@@ -56,6 +56,10 @@ function Post({ post }) {
   )
 
   const likePost = async (e) => {
+    if(!user) {
+      toast.info('Sign in to like posts.');
+      return;
+    }
     if(!likes.includes(user?.uid)) {
       setLikes([...likes, user?.uid])
       await updateDoc(doc(db, "posts", post?.id), {
@@ -70,6 +74,10 @@ function Post({ post }) {
   }
 
   const likePostDoubleClick = async (e) => {
+    if(!user) {
+      toast.info('Sign in to like posts.');
+      return;
+    }
     const heart = e.el.children.heart
     if(!heart.classList.contains('animate-heart')) {
       heart.classList.add('animate-heart')
@@ -87,6 +95,10 @@ function Post({ post }) {
 
   const addComment = async (e) => {
     e.preventDefault();
+    if(!user) {
+      toast.info('Sign in to add comments.');
+      return;
+    }
     if(comment.length < 1) {
       return;
     }

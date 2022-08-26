@@ -10,6 +10,7 @@ import Profile from "../images/defaultprofile.jpg"
 import Navbar from "./Navbar.jsx"
 import StoriesContext from '../context/StoriesContext';
 import { allSeen, hasStory } from '../services';
+import { toast } from 'react-toastify';
 
 
 function PostModalMobile() {
@@ -55,6 +56,10 @@ function PostModalMobile() {
 
   const addComment = async (e) => {
     e.preventDefault();
+    if(!user) {
+      toast.info('Sign in to add comments.');
+      return;
+    }
     if(comment.length < 1) {
       return;
     }
@@ -130,7 +135,12 @@ function PostModalMobile() {
                     />
                     <div className="space-y-4">
                       <div>
-                        <span className="mr-3 font-semibold">{post?.username}</span>
+                        <Link 
+                          className="mr-3 font-semibold"
+                          to={`/profile/${post?.uid}`}
+                        >
+                          {post?.username}
+                        </Link>
                         <span className="text-gray-600 dark:text-gray-200">
                           {post?.caption}
                         </span>

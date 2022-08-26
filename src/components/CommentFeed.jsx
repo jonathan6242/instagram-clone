@@ -1,11 +1,37 @@
 import { arrayRemove, arrayUnion, doc, updateDoc } from "firebase/firestore";
 import { useContext, useEffect, useState } from "react"
+import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 import UserContext from "../context/UserContext";
 import { db } from "../firebase";
 
 function CommentFeed({ comment, postId }) {
   const { user } = useContext(UserContext)
   const [likes, setLikes] = useState();
+  var doubletapDeltaTime = 700;
+  var doubletap1Function = null;
+  var doubletap2Function = null;
+  var doubletapTimer = null;
+
+  function doubletapTimeout() {
+      // Wait for second tap timeout
+      if(doubletap1Function) {
+        doubletap1Function();
+      }
+      doubletapTimer = null;
+  }
+
+  function tap(singleTapFunc, doubleTapFunc) {
+      if (doubletapTimer==null) {
+          doubletapTimer = setTimeout(doubletapTimeout, doubletapDeltaTime);
+          doubletap1Function = singleTapFunc;
+          doubletap2Function = doubleTapFunc;
+      } else {
+          clearTimeout(doubletapTimer);
+          doubletapTimer = null;
+          doubletap2Function();
+      }
+  }
 
   useEffect(() => {
     if(comment) {
@@ -14,6 +40,10 @@ function CommentFeed({ comment, postId }) {
   }, [comment])
 
   const likeComment = async () => {
+    if(!user) {
+      toast.info('Sign in to like comments.');
+      return;
+    }
     if(!likes.includes(user?.uid)) {
       setLikes([...likes, user?.uid])
       await updateDoc(doc(db, "posts", postId, "comments", comment?.id), {
@@ -27,10 +57,31 @@ function CommentFeed({ comment, postId }) {
     }
   }
 
+  const likeCommentDoubleClick = async () => {
+    if(!user) {
+      toast.info('Sign in to like comments.');
+      return;
+    }
+    if(!likes.includes(user?.uid)) {
+      setLikes([...likes, user?.uid])
+      await updateDoc(doc(db, "posts", postId, "comments", comment?.id), {
+        likes: arrayUnion(user?.uid)
+      })
+    }
+  }
+
   return (
-    <div className="flex justify-between">
+    <div 
+      className="flex justify-between"
+      onClick = {() => {tap(null, likeCommentDoubleClick)}}
+    >
       <p className="line-clamp-4">
-        <span className="mr-2 font-semibold">{comment?.username}</span>
+        <Link 
+          className="mr-2 font-semibold"
+          to={`/profile/${comment?.uid}`}
+        >
+          {comment?.username}
+        </Link>
         <span className="text-gray-600 dark:text-gray-200">
           {comment?.comment}
         </span>

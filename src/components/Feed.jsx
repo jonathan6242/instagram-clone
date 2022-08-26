@@ -9,12 +9,13 @@ import Sidebar from "./Sidebar"
 import Stories from "./Stories"
 import { toast } from "react-toastify"
 import { Link, useLocation } from "react-router-dom"
+import ModalContext from "../context/ModalContext"
+import useAuthUser from "../hooks/useAuthUser"
 
 function Feed() {
   const [posts, setPosts] = useState(null)
-  const { user, loading } = useContext(UserContext)
-  const [demoLoading, setDemoLoading] = useState(false);
-  const location = useLocation();
+  const { user, loading } = useAuthUser();
+  const { popupOpen, setPopupOpen } = useContext(ModalContext)
 
   useEffect(
     () =>
@@ -57,38 +58,37 @@ function Feed() {
         }
 
       </div>
+      {
+        !user && !loading && popupOpen && (
+          <div className="container lg:px-6 mx-auto my-6 md:mb-0 w-full max-w-[500px] lg:max-w-5xl flex md:hidden flex-col">      
+            <div
+              className="relative border-none p-6 bg-blue-400 text-white xs:rounded-lg space-x-2 flex flex-col lg:flex-row items-center justify-center text-center shadow-lg
+              space-y-1 lg:space-y-0"
+            >
+              <span className="font-normal">
+                Welcome to Insta.
+              </span>
+              <span 
+                className="font-semibold hover:underline underline-offset-2 decoration-2 cursor-pointer"
+                onClick={async () => {
+                  setPopupOpen(false)
+                  await signInWithEmailAndPassword(auth, "test@test.com", "Lawrence2157")
+                  toast.success('Successfully logged in.')
+                }}
+              >
+                Click here to sign in with a test account.
+              </span>
+              <i 
+                className="absolute top-2 right-4 fa-solid fa-times text-xl cursor-pointer"
+                onClick={() => setPopupOpen(false)}
+              ></i>
+            </div>
+          </div>
+        )
+      }
       <div className="container mx-auto px-0 md:px-6 max-w-5xl pb-24 
       flex justify-between space-x-8 md:pt-6">
         <div className="flex flex-col w-full max-w-[500px] lg:max-w-[540px] mx-auto lg:mx-0">
-          {
-            !user && !loading && (
-              <div className="p-6 bg-white dark:bg-dark1 xs:rounded-lg shadow-lg
-              flex flex-col lg:hidden mb-6">      
-                <button 
-                  className={`text-sm font-semibold border-none bg-red-500 text-white rounded-md cursor-pointer space-x-2 h-12 flex items-center justify-center
-                  ${demoLoading ? 'bg-opacity-50' : ''}`}
-                  onClick={async () => {
-                    setDemoLoading(true)
-                    await signInWithEmailAndPassword(auth, "test@test.com", "Lawrence2157")
-                    setDemoLoading(false)
-                    toast.success('Successfully logged in.')
-                  }}
-                  style={{pointerEvents: demoLoading ? 'none' : 'auto'}}
-                >
-                  {
-                    !demoLoading ? (
-                      <>
-                        <i className="fa-solid fa-user"></i>
-                        <span>Log in as Demo Account</span> 
-                      </>
-                    )
-                    : <i className="animate-spin fa-solid fa-spinner text-xl"></i>
-                  }
-                </button>
-              </div>
-            )
-          }
-
           <div className="flex flex-col space-y-6">
             <Stories />
             {

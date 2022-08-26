@@ -1,4 +1,5 @@
 import { useContext, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import UserContext from "../context/UserContext";
 import useAuthUser from "../hooks/useAuthUser";
 import { follow } from "../services";
@@ -40,9 +41,13 @@ function UserListItem({ setOpen, profile, setProfileUser, profileUser, type }) {
         close={() => setOpen(false)}
       />
       <div>
-        <div className="font-semibold">
+        <Link 
+          className="font-semibold"
+          to={`/profile/${profile?.uid}`}
+          onClick={() => setOpen(false)}
+        >
           {profile?.username}
-        </div>
+        </Link>
         <div className="text-gray-400">
           {profile?.fullName}
         </div>

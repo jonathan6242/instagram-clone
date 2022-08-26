@@ -13,7 +13,6 @@ function Sidebar() {
   const { firestoreUser, loading: firestoreLoading } = useFirestoreUser()
   const [usersLoading, setUsersLoading] = useState(true);
   const [suggestedUsers, setSuggestedUsers] = useState([])
-  const [demoLoading, setDemoLoading] = useState(false);
 
   useEffect(() => {
     async function getSuggestedUsers() {
@@ -33,6 +32,8 @@ function Sidebar() {
     }
   }, [user?.uid])
 
+  // await signInWithEmailAndPassword(auth, "test@test.com", "Lawrence2157")
+
   return (
     <>
       {
@@ -48,9 +49,12 @@ function Sidebar() {
                     }}></div>
                   </Link>
                   <div>
-                    <div className="font-semibold">
+                    <Link
+                      className="font-semibold"
+                      to={`/profile/${firestoreUser?.uid}`}
+                    >
                       {firestoreUser?.username}
-                    </div>
+                    </Link>
                     <div>
                       {firestoreUser?.fullName}
                     </div>
@@ -80,34 +84,7 @@ function Sidebar() {
               </div>   
             </div>
           </div>
-        ) : !user && !loading && !firestoreLoading ?
-          <div className="flex-col flex-1 hidden lg:flex space-y-6">
-            <div className="p-6 bg-white dark:bg-dark1 rounded-lg shadow-lg
-            flex flex-col">      
-              <button 
-                className={`text-sm font-semibold border-none bg-red-500 text-white rounded-md cursor-pointer space-x-2 h-12 flex items-center justify-center
-                ${demoLoading ? 'bg-opacity-50' : ''}`}
-                onClick={async () => {
-                  setDemoLoading(true);
-                  await signInWithEmailAndPassword(auth, "test@test.com", "Lawrence2157")
-                  setDemoLoading(false);
-                  toast.success('Successfully logged in.')
-                }}
-                style={{pointerEvents: demoLoading ? 'none' : 'auto'}}
-              >
-                {
-                  !demoLoading ? (
-                    <>
-                      <i className="fa-solid fa-user"></i>
-                      <span>Log in as Demo Account</span> 
-                    </>
-                  )
-                  : <i className="animate-spin fa-solid fa-spinner text-xl"></i>
-                }
-              </button>
-            </div>
-          </div>
-        : (loading || firestoreLoading || usersLoading) ? (
+        ) : (loading || firestoreLoading) ? (
           <div className="flex-col flex-1 hidden lg:flex space-y-6">
             <div className="p-6 bg-white dark:bg-dark1 rounded-lg shadow-lg
             flex flex-col">      

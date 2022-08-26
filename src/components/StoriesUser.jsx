@@ -55,6 +55,7 @@ function StoriesUser({ usersWithStories, location }) {
   // Add logged in user's UID to 'seen' array when story is seen
   useEffect(() => {
     async function addUserToSeen() {
+      if(!loggedInUser) return;
       const currentStory = user?.stories[current];
       if(!currentStory?.seenBy?.includes(loggedInUser?.uid)) {
         // Add user to seen if user is not already in seen

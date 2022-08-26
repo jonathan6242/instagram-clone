@@ -1,6 +1,7 @@
 import { useState } from "react"
 import ProfilePicture from "./ProfilePicture"
 import { follow } from "../services"
+import { Link } from "react-router-dom"
 
 function SuggestedUser({ user, firestoreUser }) {
   const [ followed, setFollowed ] = useState(false)
@@ -18,7 +19,12 @@ function SuggestedUser({ user, firestoreUser }) {
             src={user?.photoURL}
             uid={user?.uid}
           />
-          <div className="font-semibold">{user?.username}</div>
+          <Link 
+            className="font-semibold"
+            to={`/profile/${user?.uid}`}
+          >
+            {user?.username}
+          </Link>
         </div>
         <button className="follow-button"
         onClick={onClick}>

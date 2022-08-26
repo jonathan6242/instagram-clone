@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect, useRef } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import ModalContext from "../context/ModalContext";
 import ThemeContext from "../context/ThemeContext";
@@ -9,6 +9,8 @@ function Navbar() {
   const { theme, setTheme } = useContext(ThemeContext)
   const { user, loading } = useContext(UserContext)
   const { menuOpen, setMenuOpen } = useContext(ModalContext)
+  const menuRef = useRef();
+  const menuToggleRef = useRef();
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -22,6 +24,23 @@ function Navbar() {
     }
     document.documentElement.classList.toggle('dark');
   }
+
+  useEffect(() => {
+    const closeMenu = (e) => {
+      if(
+        !e.target.classList.contains('nav-menu-toggle') &&
+        !e.target.classList.contains('nav-menu') &&
+        !menuToggleRef?.current?.contains(e.target) &&
+        !menuRef?.current?.contains(e.target)
+      ) {
+        setMenuOpen(false)
+      }
+    }
+    document.addEventListener('click', closeMenu);
+    return () => {
+      document.removeEventListener('click', closeMenu)
+    }
+  }, [])
 
   return (
     // Navbar
@@ -54,9 +73,11 @@ function Navbar() {
                           <Link to='/createpost' className="nav-button">
                             <i className="fa-solid fa-plus"></i>
                           </Link>
-                          <button className="nav-button" onClick={() => {
-                            setMenuOpen(!menuOpen)
-                          }}>
+                          <button 
+                            className="nav-button nav-menu-toggle" 
+                            onClick={() => setMenuOpen(!menuOpen)}
+                            ref={menuToggleRef}
+                          >
                             <div
                               className="w-7 h-7 rounded-full bg-cover bg-center bg-no-repeat "
                               style={{
@@ -88,13 +109,16 @@ function Navbar() {
               {
                 menuOpen && (
                   <>
-                    <div className="absolute z-10 w-4 h-4 top-10 right-3 rotate-45 
+                    <div className="nav-menu absolute z-20 w-4 h-4 top-10 right-3 rotate-45 
                     border bg-white border-r-0 border-b-0
                     dark:bg-dark1 dark:border-gray-500">
                     </div>
-                    <div className="absolute flex flex-col -right-4 top-12 border divide-y
-                    bg-white text-sm rounded-md w-60 shadow-md overflow-hidden
-                    dark:bg-dark1 dark:border-gray-500 dark:divide-gray-500">
+                    <div 
+                      className="nav-menu absolute flex flex-col -right-4 top-12 border divide-y bg-white text-sm rounded-md w-60 shadow-md overflow-hidden
+                      dark:bg-dark1 dark:border-gray-500 dark:divide-gray-500
+                      z-10"
+                      ref={menuRef}
+                    >
                       <Link 
                         to={`/profile/${user?.uid}`}
                         className="px-4 py-3 flex items-center space-x-3 cursor-pointer

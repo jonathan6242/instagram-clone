@@ -26,7 +26,7 @@ function Profile() {
   const [followingOpen, setFollowingOpen] = useState(false);
   const { usersWithStories } = useContext(StoriesContext)
   const location = useLocation();
-  const { setLogoutOpen } = useContext(ModalContext)
+  const { logoutOpen, setLogoutOpen } = useContext(ModalContext)
 
   useEffect(() =>
     {
@@ -86,7 +86,9 @@ function Profile() {
   return (
     <>
       <Navbar />
-      <LogoutModal />
+      {
+        logoutOpen && <LogoutModal />
+      }
       {/* Mobile Header */}
       <div className="relative px-5 py-4 flex justify-center bg-white dark:bg-dark1
           font-semibold text-lg border-b dark:border-gray-500 md:hidden">
@@ -155,7 +157,7 @@ function Profile() {
                         </span> posts
                       </span>
                       <span 
-                        className="cursor-pointer"
+                        className={`cursor-pointer ${profileUser?.followers?.length === 0 ? 'pointer-events-none' : ''}`}
                         onClick={() => setFollowersOpen(true)}
                       >
                         <span className="font-semibold">
@@ -163,7 +165,7 @@ function Profile() {
                         </span> followers
                       </span>
                       <span
-                        className="cursor-pointer"
+                        className={`cursor-pointer ${profileUser?.following?.length === 0 ? 'pointer-events-none' : ''}`}
                         onClick={() => setFollowingOpen(true)}
                       >
                         <span className="font-semibold">
@@ -192,7 +194,8 @@ function Profile() {
                 </div>
                 <div className="flex-1 justify-center">
                   <div 
-                    className="flex flex-col items-center"
+                    className={`flex flex-col items-center cursor-pointer
+                    ${profileUser?.followers?.length === 0 ? 'pointer-events-none' : ''}`}
                     onClick={() => setFollowersOpen(true)}
                   >
                     <span className="font-semibold">
@@ -201,11 +204,12 @@ function Profile() {
                     <span>followers</span>
                   </div>
                 </div>
-                <div 
-                  className="flex-1 justify-center"
-                  onClick={() => setFollowingOpen(true)}
-                >
-                  <div className="flex flex-col items-center">
+                <div className="flex-1 justify-center">
+                  <div 
+                    className={`flex flex-col items-center cursor-pointer
+                    ${profileUser?.following?.length === 0 ? 'pointer-events-none' : ''}`}
+                    onClick={() => setFollowingOpen(true)}
+                  >
                     <span className="font-semibold">
                       {profileUser?.following.length}
                     </span>

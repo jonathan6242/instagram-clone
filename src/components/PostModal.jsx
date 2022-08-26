@@ -12,6 +12,7 @@ import { formatDistanceToNowStrict } from 'date-fns';
 import EmojiPicker from './EmojiPicker';
 import StoriesContext from '../context/StoriesContext';
 import { allSeen, hasStory } from '../services';
+import { toast } from 'react-toastify';
 
 function PostModal() {
   const { user } = useContext(UserContext);
@@ -63,6 +64,10 @@ function PostModal() {
   }, [])
 
   const likePost = async () => {
+    if(!user) {
+      toast.info('Sign in to like posts.');
+      return;
+    }
     if(!likes.includes(user?.uid)) {
       setLikes([...likes, user?.uid])
       await updateDoc(doc(db, "posts", post?.id), {
@@ -77,6 +82,10 @@ function PostModal() {
   }
 
   const likePostDoubleClick = async (e) => {
+    if(!user) {
+      toast.info('Sign in to like posts.');
+      return;
+    }
     const heart = e.el.children.heart
     if(!heart.classList.contains('animate-heart')) {
       heart.classList.add('animate-heart')
@@ -94,6 +103,10 @@ function PostModal() {
 
   const addComment = async (e) => {
     e.preventDefault();
+    if(!user) {
+      toast.info('Sign in to add comments.');
+      return;
+    }
     if(comment.length < 1) {
       return;
     }
@@ -182,9 +195,12 @@ function PostModal() {
                         )}
                         seen={false}
                       />
-                      <div className="font-semibold">
+                      <Link 
+                        className="font-semibold"
+                        to={`/profile/${post?.uid}`}
+                      >
                         {post?.username}
-                      </div>
+                      </Link>
                     </div>
                   </div>
                   <div className="p-5 overflow-y-scroll absolute bottom-[167px] top-[81px]
@@ -201,7 +217,12 @@ function PostModal() {
                       />
                       <div className="space-y-2">
                         <div>
-                          <span className="mr-3 font-semibold">{post?.username}</span>
+                          <Link 
+                            className="mr-3 font-semibold"
+                            to={`/profile/${post?.uid}`}
+                          >
+                            {post?.username}
+                          </Link>
                           <span className="text-gray-600 dark:text-gray-200">
                             {post?.caption}
                           </span>

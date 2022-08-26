@@ -1,6 +1,6 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import PostModalMobile from "./components/PostModalMobile";
-import { ModalProvider } from "./context/ModalContext";
+import ModalContext, { ModalProvider } from "./context/ModalContext";
 import { addArrows } from "./services";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Profile from "./pages/Profile";
@@ -20,10 +20,14 @@ import StoriesContext from "./context/StoriesContext";
 import SignUpGoogle from "./pages/SignUpGoogle";
 import { ToastContainer } from "react-toastify"
 import 'react-toastify/dist/ReactToastify.css';
+import useAuthUser from "./hooks/useAuthUser";
+import UserContext from "./context/UserContext";
 
 function App() {
   const { setTheme } = useContext(ThemeContext)
   const { setUsersWithStories } = useContext(StoriesContext)
+  const { user, loading } = useContext(UserContext)
+  const [popupOpen, setPopupOpen] = useState(true);
 
   useEffect(() => {
     const theme = localStorage.getItem("theme")
@@ -67,6 +71,12 @@ function App() {
     getStories()
   }, [])
 
+  useEffect(() => {
+    if(!user && !loading) {
+      setPopupOpen(true);
+    }
+  }, [user, loading])
+
   return (
     <Router>
       <ModalProvider>
@@ -75,10 +85,18 @@ function App() {
           onClick={hideEmojiPickers}
         >
           <Routes>
-            <Route path='/' element={<Home />} />
+            <Route path='/' element={
+              <Home
+                popupOpen={popupOpen}
+                setPopupOpen={setPopupOpen}
+              />
+            } />
             <Route path='/post/:id' element={
               <>
-                <Home modalOpen />
+                <Home 
+                  popupOpen={popupOpen}
+                  setPopupOpen={setPopupOpen}
+                />
                 <PostModal />
               </>
             } />

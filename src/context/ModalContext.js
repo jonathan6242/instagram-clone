@@ -7,6 +7,7 @@ export const ModalProvider = ({ children }) => {
   const [isOpenMobile, setIsOpenMobile] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const [logoutOpen, setLogoutOpen] = useState(false)
+  const [popupOpen, setPopupOpen] = useState(true);
 
   return <ModalContext.Provider value={{
     isOpen,
@@ -16,7 +17,9 @@ export const ModalProvider = ({ children }) => {
     menuOpen,
     setMenuOpen,
     logoutOpen,
-    setLogoutOpen
+    setLogoutOpen,
+    popupOpen,
+    setPopupOpen
   }}>
     {children}
   </ModalContext.Provider>

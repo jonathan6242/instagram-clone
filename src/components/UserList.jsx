@@ -30,7 +30,7 @@ function UserList({ setOpen, users, type, setProfileUser, profileUser }) {
     <>
       {/* Above 768px */}
       <div 
-        className="fixed inset-0 z-10 bg-black/50 hidden md:flex justify-center items-center"
+        className="fixed inset-0 z-10 bg-black/50 hidden md:flex"
         onClick={() => setOpen(false)}
       >
       </div>

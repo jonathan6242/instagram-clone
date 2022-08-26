@@ -2,6 +2,8 @@ import { formatDistanceToNowStrict } from "date-fns"
 import ar from "date-fns/esm/locale/ar/index.js"
 import { arrayRemove, arrayUnion, doc, updateDoc } from "firebase/firestore"
 import { useContext, useEffect, useState } from "react"
+import { Link } from "react-router-dom"
+import { toast } from "react-toastify"
 import StoriesContext from "../context/StoriesContext"
 import UserContext from "../context/UserContext"
 import { db } from "../firebase"
@@ -39,10 +41,16 @@ function CommentModal({ comment, postId }) {
   }
     
   useEffect(() => {
-    setLikes(comment?.likes)
-  }, [])
+    if(comment) {
+      setLikes(comment?.likes)
+    }
+  }, [comment])
 
   const likeComment = async () => {
+    if(!user) {
+      toast.info('Sign in to like comments.');
+      return;
+    }
     if(!likes.includes(user?.uid)) {
       setLikes([...likes, user?.uid])
       await updateDoc(doc(db, "posts", postId, "comments", comment?.id), {
@@ -57,6 +65,10 @@ function CommentModal({ comment, postId }) {
   }
 
   const likeCommentDoubleClick = async () => {
+    if(!user) {
+      toast.info('Sign in to like comments.');
+      return;
+    }
     if(!likes.includes(user?.uid)) {
       setLikes([...likes, user?.uid])
       await updateDoc(doc(db, "posts", postId, "comments", comment?.id), {
@@ -82,7 +94,12 @@ function CommentModal({ comment, postId }) {
         />
         <div className="space-y-4">
           <div>
-            <span className="mr-3 font-semibold">{comment?.username}</span>
+            <Link 
+              className="mr-3 font-semibold"
+              to={`/profile/${comment?.uid}`}
+            >
+              {comment?.username}
+            </Link>
             <span className="text-gray-600 dark:text-gray-200 break-words">
               {comment?.comment}
             </span>
