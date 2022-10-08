@@ -82,7 +82,7 @@ function Sidebar() {
               </div>   
             </div>
           </div>
-        ) : (firestoreLoading) ? (
+        ) : (usersLoading) ? (
           <div className="flex-col flex-1 hidden lg:flex space-y-6">
             <div className="p-6 bg-white dark:bg-dark1 rounded-lg shadow-lg
             flex flex-col">      
