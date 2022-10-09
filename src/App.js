@@ -22,6 +22,9 @@ import { ToastContainer } from "react-toastify"
 import 'react-toastify/dist/ReactToastify.css';
 import useAuthUser from "./hooks/useAuthUser";
 import UserContext from "./context/UserContext";
+import Aos from "aos";
+import 'aos/dist/aos.css';
+
 
 function App() {
   const { setTheme } = useContext(ThemeContext)
@@ -31,12 +34,12 @@ function App() {
 
   useEffect(() => {
     const theme = localStorage.getItem("theme")
-    if(theme === 'dark') {
-      setTheme('dark');
-      document.documentElement.classList.add('dark');
-    } else {
-      setTheme('light')
+    if(theme === 'light') {
+      setTheme('light');
       document.documentElement.classList.remove('dark');
+    } else {
+      setTheme('dark')
+      document.documentElement.classList.add('dark');
     }
   }, [])
 
@@ -76,6 +79,10 @@ function App() {
       setPopupOpen(true);
     }
   }, [user, loading])
+
+  useEffect(() => {
+    Aos.init()
+  }, [])
 
   return (
     <Router>

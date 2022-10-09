@@ -123,7 +123,13 @@ function Post({ post }) {
   }
 
   return (
-    <div className="w-full bg-white dark:bg-dark1 xs:rounded-lg post relative shadow-lg">
+    <div 
+      className="w-full bg-white dark:bg-dark1 xs:rounded-lg post relative shadow-lg"
+      data-aos="fade-right"
+      data-aos-delay="50"
+      data-aos-duration="500"
+      data-aos-offset="250"
+    >
       {/* Header */}
       <div className="p-4 px-5 justify-between">
         <div className="flex items-center space-x-3">
