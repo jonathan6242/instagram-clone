@@ -33,6 +33,10 @@ function PostModal() {
       setPost({...docSnap.data(), id: docSnap.id})
     }
     getPost();
+    return () => {
+      document.body.classList.remove('post-modal-open')
+      setIsOpen(false);
+    }
   }, []);
 
   useEffect(() => {
@@ -40,6 +44,14 @@ function PostModal() {
       setLikes(post.likes)
     }
   }, [post])
+
+  useEffect(() => {
+    if(isOpen) {
+      document.body.classList.add('post-modal-open')
+    } else {
+      document.body.classList.remove('post-modal-open')
+    }
+  }, [isOpen])
 
   useEffect(
     () => {
@@ -132,7 +144,7 @@ function PostModal() {
 
   return (
 
-      <div className="fixed inset-0 z-30 flex items-center justify-center post-modal"
+      <div className="fixed inset-0 z-30 flex items-center justify-center post-modal px-6 overflow-y-hidden"
       >
         {
           isOpen && (
@@ -163,7 +175,7 @@ function PostModal() {
         >
           {
             post !== null ? (
-              <div className="w-full rounded-lg max-w-5xl px-6 hidden md:flex z-20
+              <div className="w-full rounded-lg max-w-5xl hidden md:flex z-20
               dark:text-white max-h-[95vh]">
                 <PostModalSwiper
                   photos={post?.photos || []}
@@ -286,7 +298,7 @@ function PostModal() {
                 </div>
               </div>
             ) : (
-              <div className="w-full rounded-lg max-w-5xl px-6 hidden md:flex z-20
+              <div className="w-full rounded-lg max-w-5xl hidden md:flex z-20
               dark:text-white max-h-[95vh]">
                 <div className="w-full animated-bg rounded-l-lg">
                   <div className="relative pb-[150%] w-full flex items-center justify-center rounded-l-lg bg-contain bg-no-repeat bg-center post-modal-swiper"></div>

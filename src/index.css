@@ -10,6 +10,13 @@
   box-sizing: border-box;
 }
 
+@media(min-width: 768px) {
+  body.post-modal-open {
+    overflow-y: hidden;
+  }
+}
+
+
 .hover-effect {
   @apply rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center justify-center text-center
   duration-150
