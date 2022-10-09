@@ -78,8 +78,10 @@ function StoriesUser({ usersWithStories, location }) {
   }, [user, current])
 
   const nextStory = () => {
+    console.log('next story')
     if(current === length - 1) {
       nextUser()
+      console.log('next user')
     }
     setPlaying(true);
     setTime(0)
@@ -105,6 +107,7 @@ function StoriesUser({ usersWithStories, location }) {
       navigate(`/stories/${usersWithStories[userIndex + 1]?.id}`)
     } else {
       navigate('/')
+      console.log(123)
     }
   }
 
@@ -257,22 +260,7 @@ function StoriesUser({ usersWithStories, location }) {
           
             }
           </div>
-          {
-            (!(userIndex === usersWithStories?.length - 1 && current === length - 1)) && (
-              <i 
-                // className="fa-solid fa-chevron-circle-right -right-16 stories-button"
-                className="stories-button w-3/4 right-0
-                fa-solid fa-chevron-circle-right md:-right-16"
-                onClick={
-                  () => {
-                    if(!holdEnd) {
-                      nextStory();
-                    }
-                  }
-                }
-              ></i>
-            )
-          }
+          {/* Previous Story */}
           {
              (!(userIndex === 0 && current === 0)) && (
               <i 
@@ -286,6 +274,34 @@ function StoriesUser({ usersWithStories, location }) {
               ></i>
             )
           }
+          {/* Next Story - Above 768px */}
+          {
+            (!(userIndex === usersWithStories?.length - 1 && current === length - 1)) && (
+              <i 
+                className="stories-button hidden md:block w-3/4 right-0
+                fa-solid fa-chevron-circle-right md:-right-16"
+                onClick={
+                  () => {
+                    if(!holdEnd) {
+                      nextStory();
+                    }
+                  }
+                }
+              ></i>
+            )
+          }
+          {/* Next Story - Below 768px */}
+          <i 
+            className="stories-button w-3/4 right-0
+            fa-solid fa-chevron-circle-right md:hidden"
+            onClick={
+              () => {
+                if(!holdEnd) {
+                  nextStory();
+                }
+              }
+            }
+          ></i>
         </div>
       </div>
       <Link 
