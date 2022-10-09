@@ -151,19 +151,6 @@ function PostModal() {
         }
 
         {/* Desktop Close Button */}
-        <i 
-          className="fixed z-30 fa-solid fa-times top-8 right-8 cursor-pointer text-white text-3xl hidden md:block"
-            onClick={() => {
-              setIsOpen(false)
-              setTimeout(() => {
-                if(location?.pathname?.includes('profile')) {
-                  navigate(location?.pathname?.slice(0, location?.pathname?.indexOf('post')))
-                } else {
-                  navigate('/')
-                }
-              }, 75)
-            }}
-        />
         <Transition
           show={isOpen}
           as={Fragment}
