@@ -10,7 +10,7 @@ https://instagramclone-v1.vercel.app/
 ## Features
 * Authentication with both Google and email + password
 * Creating, editing and deleting posts
-* Posting stories
+* Posting and viewing stories
 * Editing profiles
 * Liking posts and comments
 * Following and unfollowing users
