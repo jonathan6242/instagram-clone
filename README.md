@@ -15,6 +15,7 @@ https://instagramclone-v1.vercel.app/
 * Liking posts and comments
 * Following and unfollowing users
 * Sign in and sign up validation
+* Profile pages
 * Light and dark mode
 * Mobile responsive
 
