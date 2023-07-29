@@ -20,11 +20,7 @@ import StoriesContext from "./context/StoriesContext";
 import SignUpGoogle from "./pages/SignUpGoogle";
 import { ToastContainer } from "react-toastify"
 import 'react-toastify/dist/ReactToastify.css';
-import useAuthUser from "./hooks/useAuthUser";
 import UserContext from "./context/UserContext";
-import Aos from "aos";
-import 'aos/dist/aos.css';
-
 
 function App() {
   const { setTheme } = useContext(ThemeContext)
@@ -79,10 +75,6 @@ function App() {
       setPopupOpen(true);
     }
   }, [user, loading])
-
-  useEffect(() => {
-    Aos.init()
-  }, [])
 
   return (
     <Router>
