@@ -232,41 +232,41 @@ function Profile() {
                   <div className="flex flex-col space-y-6">
                     <div className="flex flex-col items-start space-y-4
                     md:space-y-0 md:space-x-10 md:flex-row md:items-center">
-                      <div className="animated-bg rounded w-52 text-2xl md:text-3xl font-light">
+                      <div className="animated-bg w-52 text-2xl md:text-3xl font-light">
                         &nbsp;
                       </div>
-                      <div className="animated-bg rounded w-32 h-8">
+                      <div className="animated-bg w-32 h-8">
                         &nbsp;
                       </div>
                     </div>
-                    <div className="hidden space-x-10 md:flex w-80 animated-bg rounded">
+                    <div className="hidden space-x-10 md:flex w-80 animated-bg">
                       &nbsp;
                     </div>
-                    <div className="hidden font-semibold md:block animated-bg rounded w-32">
+                    <div className="hidden font-semibold md:block animated-bg w-32">
                       &nbsp;
                     </div>
                   </div>
                 </div>
               </div>
               <div className="px-6 font-semibold md:hidden">
-                <span className="inline-block animated-bg rounded w-32">&nbsp;</span>
+                <span className="inline-block animated-bg w-32">&nbsp;</span>
               </div>
               {/* Mobile Statistics */}
               <div className="flex border-t dark:border-gray-500 py-4 md:hidden">
                 <div className="flex-1 justify-center">
-                  <div className="flex flex-col items-center w-16 animated-bg rounded mx-auto">
+                  <div className="flex flex-col items-center w-16 animated-bg mx-auto">
                     <span className="font-semibold">&nbsp;</span>
                     <span>&nbsp;</span>
                   </div>
                 </div>
                 <div className="flex-1 justify-center">
-                  <div className="flex flex-col items-center w-16 animated-bg rounded mx-auto">
+                  <div className="flex flex-col items-center w-16 animated-bg mx-auto">
                     <span className="font-semibold">&nbsp;</span>
                     <span>&nbsp;</span>
                   </div>
                 </div>
                 <div className="flex-1 justify-center">
-                  <div className="flex flex-col items-center w-16 animated-bg rounded mx-auto">
+                  <div className="flex flex-col items-center w-16 animated-bg mx-auto">
                     <span className="font-semibold">&nbsp;</span>
                     <span>&nbsp;</span>
                   </div>

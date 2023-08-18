@@ -36,7 +36,7 @@ function PostModalSwiper({ swiperRef = null , photos, likePostDoubleClick }) {
         photos.length > 0 && photos.map((photo, index) => (
           <SwiperSlide key={index} className='w-full'>
             <div 
-              className="relative pb-[150%] w-full flex items-center justify-center rounded-l-lg bg-black bg-cover bg-no-repeat bg-center post-modal-swiper"
+              className="relative pb-[150%] w-full flex items-center justify-center bg-black bg-cover bg-no-repeat bg-center post-modal-swiper"
               style={{
                 backgroundImage: `url(${photo})`
               }}

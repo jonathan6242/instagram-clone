@@ -35,7 +35,7 @@ function Google() {
 
   return (
     <button 
-      className="flex items-center justify-center space-x-2 py-2 dark:text-white text-sm font-semibold border dark:border-gray-500 rounded bg-white dark:bg-dark1 
+      className="flex items-center justify-center space-x-2 py-2 dark:text-white text-sm font-semibold border dark:border-gray-500 bg-white dark:bg-dark1 
       hover:-translate-y-[1px] hover:shadow-md duration-200"
       onClick={onClick}
     >

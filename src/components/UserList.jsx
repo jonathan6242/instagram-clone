@@ -35,7 +35,7 @@ function UserList({ setOpen, users, type, setProfileUser, profileUser }) {
       >
       </div>
       <div className="absolute inset-0 hidden md:flex justify-center items-center">
-        <div className="bg-white dark:bg-dark1 w-full max-w-sm flex flex-col rounded-lg overflow-hidden z-20 max-h-[90vh]">
+        <div className="bg-white dark:bg-dark1 w-full max-w-sm flex flex-col overflow-hidden z-20 max-h-[90vh]">
           <div className="px-3 py-2 flex items-center border-b">
             <div className="flex-1 text-center font-semibold">
               {type}

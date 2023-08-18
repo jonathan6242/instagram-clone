@@ -112,7 +112,7 @@
 }
 
 .follow-button {
-  @apply p-1 px-2 text-sm text-white bg-softBlue border-2 border-softBlue rounded-md
+  @apply p-1 px-2 text-sm text-white bg-softBlue border-2 border-softBlue
 }
 
 .unfollow-button {
@@ -127,7 +127,7 @@
 }
 
 .input-group__file::-webkit-file-upload-button {
-  @apply border-none bg-softBlue text-white mr-4 p-1 px-2 rounded cursor-pointer
+  @apply border-none bg-softBlue text-white mr-4 p-1 px-2 cursor-pointer
 }
 
 .animated-bg {

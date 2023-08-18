@@ -37,7 +37,7 @@ function Sidebar() {
       {
         user && !firestoreLoading && !usersLoading ? ( 
           <div className="flex-col flex-1 hidden lg:flex space-y-6">
-            <div className="p-6 bg-white dark:bg-dark1 rounded-lg shadow-lg
+            <div className="p-6 bg-white dark:bg-dark1 shadow-lg
             flex flex-col">      
               <div className="flex flex-col">
                 <div className="flex items-center space-x-4">
@@ -84,39 +84,39 @@ function Sidebar() {
           </div>
         ) : (user && usersLoading) ? (
           <div className="flex-col flex-1 hidden lg:flex space-y-6">
-            <div className="p-6 bg-white dark:bg-dark1 rounded-lg shadow-lg
+            <div className="p-6 bg-white dark:bg-dark1 shadow-lg
             flex flex-col">      
               <div className="flex flex-col">
                 {/* Skeleton */}
                 <div className="flex items-center space-x-4">
                   <div className="w-14 h-14 rounded-full animated-bg"></div>
                   <div className="space-y-1">
-                    <div className="w-40 rounded animated-bg">
+                    <div className="w-40 animated-bg">
                       &nbsp;
                     </div>
-                    <div className="w-40 rounded animated-bg">
+                    <div className="w-40 animated-bg">
                       &nbsp;
                     </div>
                   </div>
                 </div>
-                <div className="rounded animated-bg mt-8 mb-4">
+                <div className="animated-bg mt-8 mb-4">
                   &nbsp;
                 </div>
                 <div className="flex flex-col space-y-3">
                   {/* Person 1 */}
                   <div className="flex space-x-4">
                     <div className="w-12 h-12 rounded-full animated-bg"></div>
-                    <div className="flex-1 animated-bg rounded"></div>
+                    <div className="flex-1 animated-bg"></div>
                   </div>
                   {/* Person 2 */}
                   <div className="flex space-x-4">
                     <div className="w-12 h-12 rounded-full animated-bg"></div>
-                    <div className="flex-1 animated-bg rounded"></div>
+                    <div className="flex-1 animated-bg"></div>
                   </div>
                   {/* Person 3 */}
                   <div className="flex space-x-4">
                     <div className="w-12 h-12 rounded-full animated-bg"></div>
-                    <div className="flex-1 animated-bg rounded"></div>
+                    <div className="flex-1 animated-bg"></div>
                   </div>
                 </div>
               </div>   

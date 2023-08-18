@@ -22,7 +22,7 @@ function ForgotPassword() {
     <div className="flex items-center justify-center min-h-screen">
       <div className="container max-w-md mx-auto px-6">
         <div className="flex flex-col md:bg-white dark:md:bg-dark1 md:p-10 md:border-2 
-        rounded dark:border-gray-500 text-center">
+        dark:border-gray-500 text-center">
           <div className="text-xl font-semibold mb-2">Forgot your password?</div>
           <p className="text-sm mb-8 text-gray-400">
             Enter your email address and we'll send you a link to get back into your account.
@@ -31,7 +31,7 @@ function ForgotPassword() {
             <div className="space-y-4 flex flex-col text-sm text-black">
               <div className="relative">
                 <input
-                  className={`bg-gray-50 p-2 px-3 outline-none rounded border focus:border-gray-400 w-full
+                  className={`bg-gray-50 p-2 px-3 outline-none border focus:border-gray-400 w-full
                   ${status === 'success' ? 'border-green-400 focus:border-green-400' 
                   : status === 'error' ? 'border-red-400 focus:border-red-400'
                   : ''}`}
@@ -49,7 +49,7 @@ function ForgotPassword() {
               </div>
          
             </div>
-            <button className={`relative flex items-center justify-center w-full h-9 px-4 mt-10 bg-softBlue text-white text-sm font-semibold rounded ${loading ? 'bg-opacity-50' : ''}`} 
+            <button className={`relative flex items-center justify-center w-full h-9 px-4 mt-10 bg-softBlue text-white text-sm font-semibold ${loading ? 'bg-opacity-50' : ''}`} 
             style={{pointerEvents: loading ? 'none' : 'auto'}}>
               {
                 !loading ? 'Reset my password' 

@@ -17,7 +17,7 @@ function LogoutModal() {
       ></div>
       <div className="absolute inset-0 items-center md:hidden">
         <div className="flex min-h-full items-center justify-center p-4 text-center">
-          <div className="w-full max-w-md transform overflow-hidden rounded-xl bg-white text-left align-middle shadow-xl transition-all flex flex-col
+          <div className="w-full max-w-md transform overflow-hidden bg-white text-left align-middle shadow-xl transition-all flex flex-col
           divide-y z-20">
             <div 
               className="p-6 space-x-3 cursor-pointer"

@@ -43,13 +43,13 @@ function Feed() {
             <div className="flex items-center">
               <Link
                 to='/login' 
-                className="text-sm font-semibold border-none bg-softBlue text-white mr-2 p-2 px-4 rounded-md cursor-pointer"
+                className="text-sm font-semibold border-none bg-softBlue text-white mr-2 p-2 px-4 cursor-pointer"
               >
                 Log In
               </Link>
               <Link 
                 to='/signup'
-                className="text-sm font-semibold border-none text-softBlue p-2 rounded-md cursor-pointer"
+                className="text-sm font-semibold border-none text-softBlue p-2 cursor-pointer"
               >
                 Sign Up
               </Link>
@@ -62,7 +62,7 @@ function Feed() {
         !user && !loading && popupOpen && (
           <div className="container lg:px-6 mx-auto my-6 md:mb-0 w-full max-w-[500px] lg:max-w-5xl flex md:hidden flex-col">      
             <div
-              className="relative border-none p-6 bg-blue-400 text-white xs:rounded-lg space-x-2 flex flex-col lg:flex-row items-center justify-center text-center shadow-lg
+              className="relative border-none p-6 bg-blue-400 text-white space-x-2 flex flex-col lg:flex-row items-center justify-center text-center shadow-lg
               space-y-1 lg:space-y-0"
             >
               <span className="font-normal">

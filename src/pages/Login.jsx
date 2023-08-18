@@ -47,7 +47,7 @@ function Login() {
       <div className="container max-w-md mx-auto px-6">
         <div className="space-y-3">
           <div className="flex flex-col md:bg-white dark:md:bg-dark1 md:p-10 md:border-2 
-          rounded dark:border-gray-500">
+          dark:border-gray-500">
             <Link to='/'>
               <div className="text-center text-4xl font-semibold mb-8">Insta.</div>
             </Link>
@@ -55,7 +55,7 @@ function Login() {
               <div className="space-y-8 flex flex-col text-sm text-black">
                 <div className="relative">
                   <input
-                    className="bg-gray-50 p-2 px-3 outline-none rounded border focus:border-gray-400 w-full"
+                    className="bg-gray-50 p-2 px-3 outline-none border focus:border-gray-400 w-full"
                     type="text" 
                     placeholder="Email"
                     value={email}
@@ -66,7 +66,7 @@ function Login() {
                 </div>
                 <div className="relative flex items-center">
                   <input
-                    className="bg-gray-50 p-2 px-3 outline-none rounded border focus:border-gray-400 w-full"
+                    className="bg-gray-50 p-2 px-3 outline-none border focus:border-gray-400 w-full"
                     type={showPassword ? 'text' : 'password'}
                     placeholder="Password"
                     value={password}
@@ -87,7 +87,7 @@ function Login() {
                   <Message />
                 </div>
               </div>
-              <button className={`relative flex items-center justify-center w-full h-9 px-4 mt-10 bg-softBlue text-white text-sm font-semibold rounded ${loading ? 'bg-opacity-50' : ''}`} 
+              <button className={`relative flex items-center justify-center w-full h-9 px-4 mt-10 bg-softBlue text-white text-sm font-semibold ${loading ? 'bg-opacity-50' : ''}`} 
               style={{pointerEvents: loading ? 'none' : 'auto'}}>
                 {
                   !loading ? 'Log In' 
@@ -103,7 +103,7 @@ function Login() {
             {/* General Error Message */}
             <div id="general" className="font-semibold text-sm text-center mt-4 text-red-400"></div>
           </div>
-          <div className="md:bg-white dark:md:bg-dark1 py-6 md:border-2 rounded text-center text-sm dark:border-gray-500">
+          <div className="md:bg-white dark:md:bg-dark1 py-6 md:border-2 text-center text-sm dark:border-gray-500">
             Don't have an account? <Link className="text-softBlue font-semibold" to='/signup'>Sign up</Link>
           </div>
         </div>

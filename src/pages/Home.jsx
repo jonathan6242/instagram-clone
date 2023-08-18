@@ -19,7 +19,7 @@ function Home({ popupOpen, setPopupOpen }) {
         !user && !loading && popupOpen && (
           <div className="container lg:px-6 mx-auto my-6 md:mb-0 w-full max-w-[500px] lg:max-w-5xl hidden md:flex flex-col">      
             <div
-              className="relative border-none p-6 bg-blue-400 text-white xs:rounded-lg space-x-2 flex flex-col lg:flex-row items-center justify-center text-center shadow-lg
+              className="relative border-none p-6 bg-blue-400 text-white space-x-2 flex flex-col lg:flex-row items-center justify-center text-center shadow-lg
               space-y-1 lg:space-y-0"
             >
               <span className="font-normal">

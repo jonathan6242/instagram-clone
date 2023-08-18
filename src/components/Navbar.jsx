@@ -54,7 +54,7 @@ function Navbar() {
             </Link>
             <div className="relative flex items-center space-x-1 md:space-x-3 text-2xl">
               {
-                loading && <div className="w-[190px] h-8 my-1 rounded-sm animated-bg"></div>
+                loading && <div className="w-[190px] h-8 my-1 animated-bg"></div>
               }
               {
                 !loading && (
@@ -90,13 +90,13 @@ function Navbar() {
                         <>
                           <Link 
                             to='/login' 
-                            className="text-sm font-semibold border-none bg-softBlue text-white mr-4 p-2 px-4 rounded-md cursor-pointer"
+                            className="text-sm font-semibold border-none bg-softBlue text-white mr-4 p-2 px-4 cursor-pointer"
                           >
                             Log In
                           </Link>
                           <Link 
                             to='/signup'
-                            className="text-sm font-semibold border-none text-softBlue mr-4 p-2 rounded-md cursor-pointer"
+                            className="text-sm font-semibold border-none text-softBlue mr-4 p-2 cursor-pointer"
                           >
                             Sign Up
                           </Link>
@@ -114,7 +114,7 @@ function Navbar() {
                     dark:bg-dark1 dark:border-gray-500">
                     </div>
                     <div 
-                      className="nav-menu absolute flex flex-col -right-4 top-12 border divide-y bg-white text-sm rounded-md w-60 shadow-md overflow-hidden
+                      className="nav-menu absolute flex flex-col -right-4 top-12 border divide-y bg-white text-sm w-60 shadow-md overflow-hidden
                       dark:bg-dark1 dark:border-gray-500 dark:divide-gray-500
                       z-10"
                       ref={menuRef}

@@ -190,10 +190,9 @@ function StoriesUser({ usersWithStories, location }) {
     >
       <div className="group stories-container w-full flex justify-center select-none">
         <div className="relative h-full w-full flex 
-        md:w-auto md:aspect-[0.56] md:rounded-xl md:mx-16
+        md:w-auto md:aspect-[0.56] md:mx-16
         bg-gradient-to-b from-gray-400 to-gray-600">
-          <div className="overflow-hidden h-full w-full flex justify-center items-center
-          md:rounded-xl">
+          <div className="overflow-hidden h-full w-full flex justify-center items-center">
             <div className="absolute top-0 inset-x-0 px-4 pt-5 pb-8 flex flex-col space-y-3">
               <div className="space-x-1 flex">
                 {

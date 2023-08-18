@@ -68,7 +68,7 @@ function Stories() {
     slidesPerView={4}
     slidesPerGroup={3}
     freeMode={true}
-    className="h-32 bg-white dark:bg-dark1 w-full xs:rounded-lg flex items-center shadow-lg stories"
+    className="h-32 bg-white dark:bg-dark1 w-full flex items-center shadow-lg stories"
     navigation
   >
     {

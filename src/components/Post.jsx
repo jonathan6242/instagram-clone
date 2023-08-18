@@ -124,7 +124,7 @@ function Post({ post }) {
 
   return (
     <div 
-      className="w-full bg-white dark:bg-dark1 xs:rounded-lg post relative shadow-lg"
+      className="w-full bg-white dark:bg-dark1 post relative shadow-lg"
     >
       {/* Header */}
       <div className="p-4 px-5 justify-between">

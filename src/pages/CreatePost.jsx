@@ -108,7 +108,7 @@ function CreatePost() {
       <div className="container max-w-md mx-auto px-6">
         <div className="space-y-3">
           <div className="flex flex-col md:bg-white dark:md:bg-dark1 md:p-10 md:border-2 
-          rounded dark:border-gray-500">
+         dark:border-gray-500">
             <Link to='/'>
               <div className="text-center text-2xl font-semibold mb-8">
                 Create Post
@@ -117,7 +117,7 @@ function CreatePost() {
             <form onSubmit={onSubmit}>
               <div className="space-y-4 flex flex-col text-sm text-black">
                 <textarea
-                  className="bg-gray-50 p-2 px-3 outline-none rounded border focus:border-gray-400"
+                  className="bg-gray-50 p-2 px-3 outline-none border focus:border-gray-400"
                   type="text" 
                   placeholder="Caption"
                   value={caption}
@@ -126,7 +126,7 @@ function CreatePost() {
                 />      
                 <button
                   type="button"
-                  className="flex items-center justify-center w-full h-9 px-4 mt-5 bg-softBlue text-white text-sm font-semibold rounded "
+                  className="flex items-center justify-center w-full h-9 px-4 mt-5 bg-softBlue text-white text-sm font-semibold"
                   onClick={() => fileInputRef.current.click()}
                 >
                   Upload photos
@@ -142,7 +142,7 @@ function CreatePost() {
                 />
               </div>
               <CreatePostSwiper photos={photos} />
-              <button className={`relative flex items-center justify-center w-full h-9 px-4 mt-5 bg-softBlue text-white text-sm font-semibold rounded ${loading ? 'bg-opacity-50' : ''}`} 
+              <button className={`relative flex items-center justify-center w-full h-9 px-4 mt-5 bg-softBlue text-white text-sm font-semibold ${loading ? 'bg-opacity-50' : ''}`} 
               style={{pointerEvents: loading ? 'none' : 'auto'}}>
                 {
                   !loading ? 'Share' 

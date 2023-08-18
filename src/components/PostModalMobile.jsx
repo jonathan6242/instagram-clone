@@ -196,11 +196,11 @@ function PostModalMobile() {
                   <div className="flex items-start space-x-3 text-sm md:text-base">
                     <div className='animated-bg w-12 h-12 p-1 rounded-full'></div>
                     <div className="space-y-4">
-                      <div className='animated-bg rounded w-32'>
+                      <div className='animated-bg w-32'>
                         &nbsp;
                       </div>
                       <div className="flex space-x-3">
-                        <span className="animated-bg rounded w-16 text-gray-400 text-sm">
+                        <span className="animated-bg w-16 text-gray-400 text-sm">
                           &nbsp;
                         </span>
                       </div>
