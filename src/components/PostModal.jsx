@@ -181,7 +181,7 @@ function PostModal() {
                   photos={post?.photos || []}
                   likePostDoubleClick={likePostDoubleClick}
                 />
-                <div className="w-full md:max-w-[500px] md:min-w-[400px] rounded-r-lg
+                <div className="w-full md:max-w-[500px] md:min-w-[400px]
                 bg-white dark:bg-dark1 flex flex-col relative">
                   <div className="px-5 py-4 justify-between border-b dark:border-gray-500">
                     <div className="flex items-center space-x-3">
@@ -303,7 +303,7 @@ function PostModal() {
                 <div className="w-full animated-bg rounded-l-lg">
                   <div className="relative pb-[150%] w-full flex items-center justify-center rounded-l-lg bg-contain bg-no-repeat bg-center post-modal-swiper"></div>
                 </div>
-                <div className="w-full md:max-w-[500px] md:min-w-[400px] rounded-r-lg
+                <div className="w-full md:max-w-[500px] md:min-w-[400px]
                 bg-white dark:bg-dark1 flex flex-col relative">
                   <div className="px-5 py-4 justify-between border-b dark:border-gray-500">
                     <div className="flex items-center space-x-3">
